@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+#sidebar{
+    display: relative;
+    position: fixed;  /*sayfa kaydırılsa da konumu sabit kalır*/
+    top: 0;/*sayfanin en üstünden başlar*/
+    height: 100%;
+    width: 150px;
+    background-color: rgb(74, 71, 71);
+    color: white;
+    padding:0;
+    transition: 1s;/*yumuşak bir geçiş olur*/
+    left: -150px;/* sağdan -250 px e koy yani sidebar görünmesin*/
+     /*bu en üste kimin görüneceğini belirler z doğrusu adi üstünde istediğin değeri verebilirsin
+    inhert : kullanirsan bu değeri bir üsten al demek mesela color:inhert dersen üstünde kinin rengi neyse o olur*/
+}
+
+
+#sidebar.active /*hem id hemde sinifi ayni anda seçebiliyoruz*/
+{
+    left: 0px;
+}
+
+.close-button{
+    margin-left:120px;
+    align-items: self-end;
+    padding-left: 0;
+}
+
+
+
+.row
+{
+    background: #000;
+}
