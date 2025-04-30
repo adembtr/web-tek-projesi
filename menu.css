@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+:root{
+    --background-color:black;
+    --text-color:rgb(255, 255, 255);
+}
 #sidebar{
     display: relative;
     position: fixed;  /*sayfa kaydırılsa da konumu sabit kalır*/
     top: 0;/*sayfanin en üstünden başlar*/
     height: 100%;
     width: 150px;
-    background-color: rgb(74, 71, 71);
-    color: white;
+    background-color:var(--background-color);
     padding:0;
     transition: 1s;/*yumuşak bir geçiş olur*/
     left: -150px;/* sağdan -250 px e koy yani sidebar görünmesin*/
@@ -21,15 +24,138 @@
     left: 0px;
 }
 
-.close-button{
-    margin-left:120px;
-    align-items: self-end;
+.close{
+    display: flex; /*ögeleri hizaliyorum*/
+    justify-content: flex-end;/*sola hizaliyorum*/
+    align-items: center;
     padding-left: 0;
+    margin-left: 0;
 }
 
+.open-button{
+    background-color: #5111e8;
+}
+
+.col-sm-2{
+    color:var(--text-color);
+}
 
 
 .row
 {
-    background: #000;
+    background: var(--background-color);
+}
+
+.bilgi{
+    background-color: var(--background-color);
+    display: flex;
+}
+.bilgi div{
+    background-color: var(--background-color);
+}
+
+.bilgi .name{
+    color: var(--text-color);
+}
+
+.bilgi{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img{
+    object-fit: cover;
+    border-radius: 10%;
+    width:40px;
+    height: 40px;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sehir-link{
+    width: 170px;
+}
+
+.dropdown-menu{
+    background-color: var(--background-color);
+   
+}
+
+#sidebar li{
+    padding-top: 10px;
+}
+
+/* 576px ve altındaki ekranlar için */
+@media (max-width: 576px) {
+    /* Sidebar butonlarını ve diğer öğeleri küçült */
+    #sidebar .btn{
+        font-size: 14px; /* Buton yazı boyutunu küçült */
+        padding: 6px 10px; /* Buton içindeki dolguyu küçült */
+        width: auto; /* Buton genişliğini içerik boyutuna göre ayarla */
+    }
+    #sidebar .close{
+        font-size: 14px; /* Buton yazı boyutunu küçült */
+        padding: 6px 10px; /* Buton içindeki dolguyu küçült */
+        width: auto; /* Buton genişliğini içerik boyutuna göre ayarla */
+    }
+
+    .dropdown-toggle {
+        font-size: 14px; /* Dropdown buton yazı boyutunu küçült */
+        padding: 6px 10px;
+        width: auto; /* Dropdown butonunun genişliğini otomatik yap */
+    }
+
+    #sidebar {
+        width: 100px; /* Sidebar genişliğini küçült */
+        padding: 10px; /* Sidebar içeriğini biraz daralt */
+    }
+
+    .col-1, .col-11 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Sidebar içeriği */
+    #sidebar ul {
+        padding-left: 0;
+        margin: 0;
+    }
+
+    /* Kolonları daha esnek yaparak yerden kazanın */
+    .col-sm-2 {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    /* Menü simgelerini küçült */
+    .fa-bars, .fa-xmark {
+        font-size: 24px; /* Menü simgesinin boyutunu küçült */
+    }
+
+    .name {
+        font-size: 18px; /* Başlık fontunu küçült */
+    }
+
+    .logo img {
+        width: 50px; /* Logo boyutunu küçült */
+    }
+
+    /* Dropdown menüsünün genişliğini sınırlamak */
+    .dropdown-toggle {
+        width: auto; /* Genişliği otomatik yap */
+    }
+
+    .dropdown-menu {
+        min-width: 160px; /* Dropdown menüsünün genişliğini sınırla */
+        width: auto; /* Menünün genişliğini içerik boyutuna göre ayarla */
+    }
 }
