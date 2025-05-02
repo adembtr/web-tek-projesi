@@ -1,0 +1,55 @@
+.metin header{
+    width: 100%;
+    height: 100%;
+    background-color: --bs-primary-bg-subtle;
+}
+
+.ilgiAlanı{
+    align-items: center;
+    display: inline;
+    justify-content: center;
+    height: 500px;
+}
+
+.ilgiAlanı .site {
+    height: 500px;
+}
+.ilgiAlanı .site iframe{
+    z-index: 500;
+    width: 100%;
+    height: 100%;
+}
+
+.ilgiAlanı .carousel{
+    width: 50%;
+    height: 400px;
+}
+.ilgiAlanı .carousel img{
+  height: 400px;
+}
+
+.iletişim{
+    text-align: right;
+    background-color: #fffdfd;
+    height: 40px;
+}
+
+.iletişim a {
+    padding-left: 5px;
+    padding-right: 11px;
+}
+.iletişim a img{
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 576px) {
+    
+      .ilgiAlanı .carousel{
+        width: 50%;
+        height: 200px;
+    }
+    .ilgiAlanı .carousel img{
+        height: 200px;
+      }
+}

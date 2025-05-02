@@ -90,6 +90,23 @@
     padding-top: 10px;
 }
 
+.dropdown ul {
+    background-color:rgb(255, 255, 255);
+}
+
+.dropdown-menu li {
+    width: 100px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.dropdown-menu li a{
+color: rgb(25, 0, 255);
+text-decoration: none;
+}
+
+
+
 /* 576px ve altındaki ekranlar için */
 @media (max-width: 576px) {
     /* Sidebar butonlarını ve diğer öğeleri küçült */
@@ -157,5 +174,12 @@
     .dropdown-menu {
         min-width: 160px; /* Dropdown menüsünün genişliğini sınırla */
         width: auto; /* Menünün genişliğini içerik boyutuna göre ayarla */
+    }
+
+    .dropdown
+    {
+        min-width: 100px;
+        width: auto;
+        min-height: 100px;
     }
 }
