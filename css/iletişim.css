@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    width: 100%;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+    display: flex;          /*! ögeler esnek oluyor*/
+    
+    background:linear-gradient(145deg, #ff0000, #ffa200, #f8f40a) ;
+    background-size: cover;              /* !örtmek kaplamak*/
+    background-position: center center;  /*!görseli yukaridan ve aşağidan ortala*/
+    background-repeat: no-repeat;        /*!resim tekrar edilmez yani kenralrada boşluk kalsa dahi resim çoğaltilmaz*/
+}
+
+.loginMenü{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width:45%;
+    height: 80%;
+    background: linear-gradient(145deg, #085777, #1189b1, #0eb0f6);
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 20px 30px 30px rgba(9, 194, 255, 0.545);
+}
+
+.loginMenü p{
+    color: white;
+}
+
+/* Tüm form elemanlarını blok düzene geç, full genişlik ver */
+.loginMenü table,
+.loginMenü label,
+.loginMenü input,
+.loginMenü button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobilde yazı boyutunu da küçült */
+@media (max-width: 576px) {
+    .loginMenü{
+        width: 98%;
+    }
+  .loginMenü label {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  .loginMenü input,
+  .loginMenü button {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
