@@ -13,29 +13,107 @@
 </head>
 <body>
     
-    <div class="loginMenü">
-        <form action="login.php" method="POST">
-            <table>
-                <tr>
-                    <label for="username">Kullanici adi:</label><br>
-                    <input type="text" name="username" id="username"  placeholder="adem batur" required> <!--required doldurmak zorunlu-->
-                </tr>
-                <tr>
-                    <label for="email">Kullanici emaili:</label><br>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="ornek@mail.com" required>
-                </tr>
-                <tr>
-                    <label for="telefon">telefon no:</label><br>
-                    <input type="tel" name="telefon" id="telefon" placeholder="05355355353">
-                </tr>
-                <tr>
-                    <input type="submit" name="Giriş Yap" id="">
-                </tr>
-            </table>
+    <div class="loginMenü" id="app">
+        <form
+          id="contactForm"
+          action="iletişim.php"
+          method="POST"
+          novalidate
+          @submit.prevent="onSubmitVue"
+        >
+          <table>
+            <!-- Kullanıcı Adı -->
+            <tr>
+              <td><label for="username">Kullanıcı Adı:</label></td>
+              <td>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="adem batur"
+                  v-model="form.username"
+                  class="form-control"
+                >
+                <div class="text-danger" v-if="errors.username">
+                  {{ errors.username }}
+                </div>
+              </td>
+            </tr>
+      
+            <!-- E-posta -->
+            <tr>
+              <td><label for="email">Kullanıcı E-postası:</label></td>
+              <td>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="ornek@mail.com"
+                  v-model="form.email"
+                  class="form-control"
+                >
+                <div class="text-danger" v-if="errors.email">
+                  {{ errors.email }}
+                </div>
+              </td>
+            </tr>
+      
+            <!-- Telefon -->
+            <tr>
+              <td><label for="telefon">Telefon No:</label></td>
+              <td>
+                <input
+                  type="tel"
+                  name="telefon"
+                  id="telefon"
+                  placeholder="05355355353"
+                  v-model="form.telefon"
+                  class="form-control"
+                >
+                <div class="text-danger" v-if="errors.telefon">
+                  {{ errors.telefon }}
+                </div>
+              </td>
+            </tr>
+      
+            <!-- Butonlar -->
+            <tr>
+              <td colspan="2" style="text-align: right;">
+                <button
+                  type="button"
+                  id="jsValidateBtn"
+                  class="btn btn-outline-primary me-2"
+                >
+                  JS ile Kontrol
+                </button>
+                <button
+                  type="button"
+                  @click="validateVue"
+                  class="btn btn-outline-success me-2"
+                >
+                  Vue ile Kontrol
+                </button>
+                <button
+                  type="button"
+                  @click="clearForm"
+                  class="btn btn-warning me-2"
+                >
+                  Temizle
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Gönder
+                </button>
+              </td>
+            </tr>
+          </table>
         </form>
+      </div>
+      
 
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- vue js kütüphanesi -->
     <script src="script.js"></script>
+    <script src="iletişim_script.js"> </script>
+    <script src="vue_script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
 </body>

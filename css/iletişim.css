@@ -1,56 +1,119 @@
-body{
-    margin: 0;
-    width: 100%;
-    height: 600px;
-    align-items: center;
-    justify-content: center;
-    display: flex;          /*! ögeler esnek oluyor*/
-    
-    background:linear-gradient(145deg, #ff0000, #ffa200, #f8f40a) ;
-    background-size: cover;              /* !örtmek kaplamak*/
-    background-position: center center;  /*!görseli yukaridan ve aşağidan ortala*/
-    background-repeat: no-repeat;        /*!resim tekrar edilmez yani kenralrada boşluk kalsa dahi resim çoğaltilmaz*/
+/* 1) Konteyner – ortada ve kart görünümünde */
+.loginMenü {
+  max-width: 420px;
+  margin: 3rem auto;              /* dikeyde 3rem boşluk, yatay ortala */
+  padding: 2rem;                  /* iç boşluk */
+  background: #ffffff;            /* beyaz kart */
+  border-radius: 8px;             /* yuvarlatılmış köşeler */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: sans-serif;
 }
 
-.loginMenü{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    width:45%;
-    height: 80%;
-    background: linear-gradient(145deg, #085777, #1189b1, #0eb0f6);
-    color: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 20px 30px 30px rgba(9, 194, 255, 0.545);
-}
-
-.loginMenü p{
-    color: white;
-}
-
-/* Tüm form elemanlarını blok düzene geç, full genişlik ver */
-.loginMenü table,
-.loginMenü label,
-.loginMenü input,
-.loginMenü button {
-  display: block;
+/* 2) Tabloyu esnek dikey düzene çeviriyor*/
+.loginMenü table {
   width: 100%;
-  box-sizing: border-box;
+  border-collapse: collapse; /*Bitişik hücrelerin kenarlıkları “çakışarak” tek bir çizgi halinde birleştirilir.Dolayısıyla iki hücre arasındaki çift çizgi yerine tek, kesintisiz bir çizgi görürsünüz.*/
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;                /* satırlar arası mesafe */
+  margin: 0;                      /* varsayılan tabloda gelen boşlukları iptal et */
 }
 
-/* Mobilde yazı boyutunu da küçült */
-@media (max-width: 576px) {
-    .loginMenü{
-        width: 98%;
-    }
-  .loginMenü label {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
+/* 3) Her <tr>’yi blok olarak göster */
+.loginMenü table tr {
+  display: flex;
+  flex-direction: column; /*Ana eksen (main axis) dikey olur. Yani flex it*/
+}
+
+/* 4) Etiketler / başlıklar */
+.loginMenü table tr label,
+.loginMenü table tr:first-child {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* 6) Input’lar */
+.loginMenü input[type="text"],
+.loginMenü input[type="email"],
+.loginMenü input[type="tel"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.loginMenü input:focus {  /* tikladiğinda bu olsun*/
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* 7) Buton grubu */
+.loginMenü table tr.buttontr {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 8) Tüm butonlara ortak stil */
+.loginMenü button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+/* 9) Renkli buton varyasyonları */
+.loginMenü button.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+.loginMenü button.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.loginMenü button.btn-outline-primary {
+  background: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+.loginMenü button.btn-outline-primary:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.loginMenü button.btn-outline-success {
+  background: transparent;
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+.loginMenü button.btn-outline-success:hover {
+  background: #28a745;
+  color: #fff;
+}
+
+.loginMenü button.btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+.loginMenü button.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+/* 10) telefon modu */
+@media (max-width: 480px) {
+  .loginMenü {
+    margin: 1.5rem 1rem;
+    padding: 1.5rem;
   }
-  .loginMenü input,
-  .loginMenü button {
+  .loginMenü input, .loginMenü button {
     font-size: 0.9rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
   }
 }
