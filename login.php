@@ -19,17 +19,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // form post ile mi gönderildi
     
     // Kullanıcı adı ve şifre kontrolü
     // Örnek doğru bilgiler:
-    $correct_user = "b241210051@sakarya.edu.tr";
-    $correct_pass = "b1812100001";
+    $correct_user = "b241210051@org.sakarya.edu.tr";
+    $correct_pass = "b241210051";
 
     if ($username == $correct_user && $password == $correct_pass) {
-        // Kullanıcı adı domainli, şifre domainsiz olmalı
-        $kisaKullanici = explode("@", $username)[0];
-        echo "Hoşgeldiniz $kisaKullanici";
-    } else {
-        // Giriş başarısızsa tekrar login sayfasına yönlendir
-        header("Location: login.html");
+        // Başarılıysa menu.html'e yönlendir
+        header("Location: menü.html");
         exit;
-    }
+    } 
+    else {
+        // BAŞARISIZ → JavaScript alert ile mesaj gösterip login sayfasına dön
+        echo "<script>
+                alert('Şifre yanlış.');
+                window.location.replace('login.php');
+                </script>";
+    } 
+    exit;
 }
+
 ?>
