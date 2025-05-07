@@ -45,7 +45,7 @@ $telefon  = isset($_POST['telefon'])  ? e($_POST['telefon'])  : '(boş)';
       <dd class="col-sm-9"><?= $telefon ?></dd>
     </dl>
 
-    <a href="iletisim.html" class="btn btn-secondary mt-4">Geri Dön</a>
+    <a href="iletişim.html" class="btn btn-secondary mt-4">Geri Dön</a>
   </div>
 
   <!-- Bootstrap JS (isteğe bağlı) -->

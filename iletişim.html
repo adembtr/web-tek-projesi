@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iletişim</title>
     <link rel="stylesheet" href="/css/iletişim.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--ikon eklemeye yariyor-->
     <link rel="stylesheet" href="/css/menu.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--iconlari kullanmak için-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
@@ -20,7 +20,12 @@
           method="POST"
           novalidate
           @submit.prevent="onSubmitVue"
-        >
+        ><!--– novalidate : HTML5’in yerleşik form doğrulamasını devre dışı bırakır.
+        submit.prevent="onSubmitVue"
+        – Bu bir Vue.js kısayoludur (v-on:submit.prevent).
+        – submit olayını (form gönderme tuşuna basıldığında tetiklenen) dinler.
+        – .prevent ile tarayıcının varsayılan “formu gönder ve sayfayı yenile” davranışını engeller-->
+
           <table>
             <!-- Kullanıcı Adı -->
             <tr>
@@ -33,7 +38,11 @@
                   placeholder="adem batur"
                   v-model="form.username"
                   class="form-control"
-                >
+                ><!--v-model="form.username"
+                Vue.js’de iki yönlü veri bağlaması yapar. Bu alana girilen değer otomatik olarak bileşenin form.username değişkenine aktarılır ve değişken güncellenirse alan da güncellenir.
+
+                class="form-control"
+                Bu girişe form-control isimli CSS sınıfını atar. Bootstrap veya kendi yazdığınız stil kurallarına göre görsel düzen ve davranış kazandırır.-->
                 <div class="text-danger" v-if="errors.username">
                   {{ errors.username }}
                 </div>
