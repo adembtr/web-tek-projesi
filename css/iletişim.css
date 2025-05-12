@@ -63,47 +63,51 @@
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
 }
 
-/* 9) Renkli buton varyasyonları */
+/* 9) Renkli buton varyasyonları - Gri tonlar ve modern dokunuşlar */
 .loginMenü button.btn-primary {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #6c757d;
+  color: #ffffff;
+  border: 1px solid #727973;
 }
 .loginMenü button.btn-primary:hover {
-  background-color: #0069d9;
+  background-color: rgb(28, 140, 20);
+  color: #000000;
 }
 
 .loginMenü button.btn-outline-primary {
-  background: transparent;
-  color: #007bff;
-  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #6c757d;
 }
 .loginMenü button.btn-outline-primary:hover {
-  background: #007bff;
-  color: #fff;
+  background-color: #00ddff;
+  color: #ffffff;
 }
 
 .loginMenü button.btn-outline-success {
-  background: transparent;
-  color: #28a745;
-  border: 1px solid #28a745;
+  background-color: #f8f9fa;
+  color: #727973;
+  border: 1px solid #55735c;
 }
 .loginMenü button.btn-outline-success:hover {
-  background: #28a745;
-  color: #fff;
+  background-color: #00ddff;
+  color: #ffffff;
 }
 
 .loginMenü button.btn-warning {
-  background-color: #ffc107;
-  color: #212529;
+  background-color: #adb5bd;
+  color: #ffffff;
+  border: 1px solid #adb5bd;
 }
 .loginMenü button.btn-warning:hover {
-  background-color: #e0a800;
+  background-color: #ff0000;
 }
 
 /* 10) telefon modu */

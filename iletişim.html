@@ -5,125 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iletişim</title>
     <link rel="stylesheet" href="/css/iletişim.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--ikon eklemeye yariyor-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--iconlari kullanmak için-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    
     <div class="loginMenü" id="app">
-        <form
-          id="contactForm"
-          action="iletişim.php"
-          method="POST"
-          novalidate
-          @submit.prevent="onSubmitVue"
-        ><!--– novalidate : HTML5’in yerleşik form doğrulamasını devre dışı bırakır.
-        submit.prevent="onSubmitVue"
-        – Bu bir Vue.js kısayoludur (v-on:submit.prevent).
-        – submit olayını (form gönderme tuşuna basıldığında tetiklenen) dinler.
-        – .prevent ile tarayıcının varsayılan “formu gönder ve sayfayı yenile” davranışını engeller-->
+        <form id="contactForm" action="iletişim.php" method="POST" novalidate @submit.prevent="onSubmitVue">
+            <table>
+                <tr>
+                    <td><label for="username">Kullanıcı Adı:</label></td>
+                    <td>
+                        <input type="text" name="username" id="username" placeholder="adem batur" v-model="form.username" class="form-control">
+                        <div class="text-danger" v-if="errors.username">{{ errors.username }}</div>
+                    </td>
+                </tr>
 
-          <table>
-            <!-- Kullanıcı Adı -->
-            <tr>
-              <td><label for="username">Kullanıcı Adı:</label></td>
-              <td>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="adem batur"
-                  v-model="form.username"
-                  class="form-control"
-                ><!--v-model="form.username"
-                Vue.js’de iki yönlü veri bağlaması yapar. Bu alana girilen değer otomatik olarak bileşenin form.username değişkenine aktarılır ve değişken güncellenirse alan da güncellenir.
+                <tr>
+                    <td><label for="email">E-posta:</label></td>
+                    <td>
+                        <input type="email" name="email" id="email" placeholder="ornek@mail.com" v-model="form.email" class="form-control">
+                        <div class="text-danger" v-if="errors.email">{{ errors.email }}</div>
+                    </td>
+                </tr>
 
-                class="form-control"
-                Bu girişe form-control isimli CSS sınıfını atar. Bootstrap veya kendi yazdığınız stil kurallarına göre görsel düzen ve davranış kazandırır.-->
-                <div class="text-danger" v-if="errors.username">
-                  {{ errors.username }}
-                </div>
-              </td>
-            </tr>
-      
-            <!-- E-posta -->
-            <tr>
-              <td><label for="email">Kullanıcı E-postası:</label></td>
-              <td>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="ornek@mail.com"
-                  v-model="form.email"
-                  class="form-control"
-                >
-                <div class="text-danger" v-if="errors.email">
-                  {{ errors.email }}
-                </div>
-              </td>
-            </tr>
-      
-            <!-- Telefon -->
-            <tr>
-              <td><label for="telefon">Telefon No:</label></td>
-              <td>
-                <input
-                  type="tel"
-                  name="telefon"
-                  id="telefon"
-                  placeholder="05355355353"
-                  v-model="form.telefon"
-                  class="form-control"
-                >
-                <div class="text-danger" v-if="errors.telefon">
-                  {{ errors.telefon }}
-                </div>
-              </td>
-            </tr>
-      
-            <!-- Butonlar -->
-            <tr>
-              <td colspan="2" style="text-align: right;">
-                <button
-                  type="button"
-                  id="jsValidateBtn"
-                  class="btn btn-outline-primary me-2"
-                >
-                  JS ile Kontrol
-                </button>
-                <button
-                  type="button"
-                  @click="validateVue"
-                  class="btn btn-outline-success me-2"
-                >
-                  Vue ile Kontrol
-                </button>
-                <button
-                  type="button"
-                  @click="clearForm"
-                  class="btn btn-warning me-2"
-                >
-                  Temizle
-                </button>
-                <button type="submit" class="btn btn-primary">
-                  Gönder
-                </button>
-              </td>
-            </tr>
-          </table>
+                <tr>
+                    <td><label for="telefon">Telefon No:</label></td>
+                    <td>
+                        <input type="tel" name="telefon" id="telefon" placeholder="05355355353" v-model="form.telefon" class="form-control">
+                        <div class="text-danger" v-if="errors.telefon">{{ errors.telefon }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="dosya">Dosya Yükle:</label></td>
+                    <td>
+                        <input type="file" name="dosya" id="dosya" @change="onFileChange" class="form-control">
+                        <div class="text-danger" v-if="errors.dosya">{{ errors.dosya }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="mesaj">Mesajınız:</label></td>
+                    <td>
+                        <textarea name="mesaj" id="mesaj" v-model="form.mesaj" class="form-control"></textarea>
+                        <div class="text-danger" v-if="errors.mesaj">{{ errors.mesaj }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="sehir">Şehir Seçiniz:</label></td>
+                    <td>
+                        <select name="sehir" id="sehir" v-model="form.sehir" class="form-control">
+                            <option value="">Seçiniz</option>
+                            <option value="Van">Van</option>
+                            <option value="Kocaeli">Kocaeli</option>
+                            <option value="İstanbul">İstanbul</option>
+                            <option value="İngiltere">İngiltere</option>
+                        </select>
+                        <div class="text-danger" v-if="errors.sehir">{{ errors.sehir }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Cinsiyet:</td>
+                    <td>
+                        <input type="radio" name="cinsiyet" value="erkek" v-model="form.cinsiyet"> Erkek
+                        <input type="radio" name="cinsiyet" value="kadin" v-model="form.cinsiyet"> Kadın
+                        <div class="text-danger" v-if="errors.cinsiyet">{{ errors.cinsiyet }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="tarih">Tarih Seçiniz:</label></td>
+                    <td>
+                        <input type="date" name="tarih" id="tarih" v-model="form.tarih" class="form-control">
+                        <div class="text-danger" v-if="errors.tarih">{{ errors.tarih }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="zaman">Zaman Seçiniz:</label></td>
+                    <td>
+                        <input type="time" name="zaman" id="zaman" v-model="form.zaman" class="form-control">
+                        <div class="text-danger" v-if="errors.zaman">{{ errors.zaman }}</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <button type="button" id="jsValidateBtn" class="btn btn-outline-primary me-2">JS ile Kontrol</button>
+                        <button type="button" @click="validateVue" class="btn btn-outline-success me-2">Vue ile Kontrol</button>
+                        <button type="button" @click="clearForm" class="btn btn-warning me-2">Temizle</button>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </td>
+                </tr>
+            </table>
         </form>
-      </div>
-      
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- vue js kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="script.js"></script>
-    <script src="iletişim_script.js"> </script>
+    <script src="iletişim_script.js"></script>
     <script src="vue_script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

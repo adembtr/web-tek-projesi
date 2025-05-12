@@ -1,16 +1,25 @@
-// iletisim.js
 new Vue({
   el: '#app',
   data: {
     form: {
       username: '',
       email: '',
-      telefon: ''
+      telefon: '',
+      dosya: '',
+      mesaj: '',
+      sehir: '',
+      cinsiyet: '',
+      tarih: '',
+      zaman: ''
     },
     errors: {}
   },
   methods: {
-    // Genel alan doğrulama metodu
+    onFileChange(event) {
+      const file = event.target.files[0];
+      this.form.dosya = file ? file.name : '';
+    },
+
     validateField(key, predicate, message) {
       if (!predicate(this.form[key])) {
         this.$set(this.errors, key, message);
@@ -20,42 +29,35 @@ new Vue({
       return true;
     },
 
-    // Vue ile kontrolü tetikleyecek fonksiyon
     validateVue() {
-      const v1 = this.validateField(
-        'username',
-        v => v.trim().length > 0,
-        'Kullanıcı adı boş olamaz.'
-      );
-      const v2 = this.validateField(
-        'email',
-        v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
-        'Geçerli bir e-posta girin.'
-      );
-      const v3 = this.validateField(
-        'telefon',
-        v => v.trim().length > 0 && /^\d+$/.test(v),
-        'Telefon zorunludur ve sadece rakamlardan oluşmalı.'
-      );
+      const validations = [
+        this.validateField('username', v => v.trim().length > 0, 'Kullanıcı adı boş olamaz.'),
+        this.validateField('email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Geçerli bir e-posta girin.'),
+        this.validateField('telefon', v => v.trim().length > 0 && /^\d+$/.test(v), 'Telefon zorunludur ve sadece rakamlardan oluşmalı.'),
+        this.validateField('dosya', v => v.length > 0, 'Bir dosya yüklemelisiniz.'),
+        this.validateField('mesaj', v => v.trim().length > 0, 'Mesaj alanı boş bırakılamaz.'),
+        this.validateField('sehir', v => v.length > 0, 'Bir şehir seçmelisiniz.'),
+        this.validateField('cinsiyet', v => v.length > 0, 'Cinsiyet seçimi yapılmalıdır.'),
+        this.validateField('tarih', v => v.length > 0, 'Tarih seçimi yapılmalıdır.'),
+        this.validateField('zaman', v => v.length > 0, 'Zaman seçimi yapılmalıdır.')
+      ];
 
-      if (v1 && v2 && v3) {
+      if (validations.every(v => v)) {
         alert('Vue ile doğrulama başarılı! Form gönderilebilir.');
       }
     },
 
-    // Formu sıfırlar
     clearForm() {
-      this.form.username = '';
-      this.form.email    = '';
-      this.form.telefon  = '';
+      Object.keys(this.form).forEach(key => {
+        this.form[key] = '';
+      });
       this.errors = {};
+      document.getElementById('dosya').value = '';
     },
 
-    // Submit olayında önce Vue doğrulaması, sonra gerçek POST
     onSubmitVue() {
       this.validateVue();
       if (Object.keys(this.errors).length === 0) {
-        // Hata yoksa formu gönder
         document.getElementById('contactForm').submit();
       }
     }
