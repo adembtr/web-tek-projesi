@@ -4,6 +4,9 @@
     --background-color:black;
     --text-color:rgb(255, 255, 255);
 }
+nav{
+    opacity: 95%;
+}
 #sidebar{
     display: relative;
     position: fixed;  /*sayfa kaydırılsa da konumu sabit kalır*/
@@ -43,6 +46,8 @@
 
 .row
 {
+    height: 70px;
+    opacity: 95%;
     background: var(--background-color);
 }
 

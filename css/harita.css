@@ -3,6 +3,11 @@ body {
     margin: 0;
     padding: 0;
   }
+  .city{
+    background-color: black;
+    color: white;
+}
+
   header {
     background-color: #4b0082;
     color: white;

@@ -1,11 +1,15 @@
+.loginMenü  tr td {
+  color: white;
+}
+
 /* 1) Konteyner – ortada ve kart görünümünde */
 .loginMenü {
-  max-width: 420px;
+  max-width: 720px;
   margin: 3rem auto;              /* dikeyde 3rem boşluk, yatay ortala */
   padding: 2rem;                  /* iç boşluk */
-  background: #ffffff;            /* beyaz kart */
+  background: #000000;            /* beyaz kart */
   border-radius: 8px;             /* yuvarlatılmış köşeler */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: rgb(0, 0, 0)2px rgba(0,0,0,0.1);
   font-family: sans-serif;
 }
 
@@ -30,7 +34,7 @@
 .loginMenü table tr:first-child {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #ffffff;
 }
 
 /* 6) Input’lar */
