@@ -88,8 +88,10 @@
         </div>
     </nav>
     <div class="anaDiv font-monospace">
-        <h3>quantum ve neuron Kitapları</h3>
-        <div id="books"></div>
+        <div>
+            <h4>api'den veri çekme</h4>
+            <ul id="posts"> </ul>
+        </div>
 
 
        <h5 >Aşağıda başlıca bi kaç hobimden bahsediyorum..</h5>
@@ -176,6 +178,71 @@
 
 
     </div>
+
+
+    <script>
+     // 1) API anahtarı ve ayarlar
+     const benimUrl       = 'AIzaSyC0FXMsFCyPNyPxY1lW6iFIXg0CEGnulMM'; // api isteğinin kimden geldiğini söylüyoruz
+      const maxSonuc   = 10;  // Her sorguda 10 sonuç çekiyoruz.
+    const konular = ['quantum','science','technology', 'neuron','islam','risaleinur' , 'atom' , 'yapay sinir ağları' , 'derin öğrenme' , 'deep learning', 'deep learning', 'deep learning'];
+
+    // 2) Rastgele kategori seçiyoruz
+    function getRandomQuery() {
+        return konular[
+        Math.floor(Math.random() * konular.length)
+        ];
+    }
+
+    // 3) Sayfa yüklendiğinde çalışacak fonksiyon
+        async function kitapYükle() {
+        const yazılacakYerP = document.getElementById("posts");
+        yazılacakYerP.innerHTML = '';  // Önceki içeriği temizle
+
+        // 3.a) Rastgele sorgu ve startIndex
+        const seçilenKonu      = getRandomQuery();
+        const startIndex = Math.floor(Math.random() * 50);
+
+        // 3.b) URL’i oluştur
+        const url = `https://www.googleapis.com/books/v1/volumes`
+                + `?q=${encodeURIComponent(seçilenKonu)}`
+                + `&startIndex=${startIndex}`
+                + `&maxResults=${maxSonuc}`
+                + `&key=${benimUrl}`;
+
+        try {
+        // 3.c) API çağrısı
+        const res  = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+         const data = await res.json();
+
+        const items = data.items || [];
+        if (!items.length) {
+         yazılacakYerP.innerHTML = '<li>Kitap bulunamadı.</li>';
+         return;
+        }
+
+        // 3.d) Tüm çekilen kitapları dön ve listeye ekle
+        items.forEach(item => {
+            const info   = item.volumeInfo;
+            const title  = info.title   || 'Başlıksız';
+            const author = info.authors?.join(', ') || 'Yazar bilgisi yok';
+
+            const li = document.createElement('li');
+            li.textContent = `${title} — ${author}`;
+            yazılacakYerP.appendChild(li);
+        });
+
+        } catch (err) {
+        console.error("API hatası:", err);
+        yazılacakYerP.innerHTML = '<li>Kitap verisi alınamadı.</li>';
+        }
+    }
+
+    // 4) Sayfa yüklendiğinde yüklemeyi tetikle
+    window.addEventListener('load', kitapYükle);
+    </script>
+
+
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
