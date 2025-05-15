@@ -19,13 +19,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // form post ile mi gönderildi
     
     // Kullanıcı adı ve şifre kontrolü
     // Örnek doğru bilgiler:
-    $correct_user = "b241210051@org.sakarya.edu.tr";
+    $correct_user = "b241210051@sakarya.edu.tr";
     $correct_pass = "b241210051";
 
     if ($username == $correct_user && $password == $correct_pass) {
         // Başarılıysa menu.html'e yönlendir
-        header("Location: menü.html");
+        echo "<script>
+                alert('Giriş başarılı.');
+                window.location.replace('index.html');
+                </script>";
         exit;
+        
     } 
     else {
         // BAŞARISIZ → JavaScript alert ile mesaj gösterip login sayfasına dön

@@ -188,3 +188,8 @@ text-decoration: none;
         min-height: 100px;
     }
 }
+
+.login a img {
+    display: flex;
+    width: 50px;
+}
