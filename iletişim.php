@@ -20,8 +20,7 @@ $zaman    = isset($_POST['zaman'])    ? e($_POST['zaman'])    : '(boş)';
 <head>
   <meta charset="UTF-8">
   <title>İletişim Formu Sonuçları</title>
-  <link rel="stylesheet" href="/css/iletisim.css">
-  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/phpİletişim.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

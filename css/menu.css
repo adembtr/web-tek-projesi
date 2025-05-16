@@ -168,7 +168,8 @@ text-decoration: none;
     }
 
     .logo img {
-        width: 50px; /* Logo boyutunu küçült */
+        width: 30px;
+        height: 30px; /* Logo boyutunu küçült */
     }
 
     /* Dropdown menüsünün genişliğini sınırlamak */

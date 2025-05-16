@@ -1,0 +1,33 @@
+.container {
+  background-color: #ffffff;
+  color: black;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: grey;
+  margin-bottom: 1.5rem;
+}
+d1.row dt{
+  font-weight:600;
+  color: midnightblue;
+}
+
+
+d1.row dd {
+  font-style: italic;
+  color: black;
+}
+
+a.btn-secondry {
+  background-color: red;
+  border-color: aqua;
+}
+
+a.btn-secondry {
+  background-color: aqua;
+  border-color: red;
+}
