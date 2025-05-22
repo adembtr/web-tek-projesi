@@ -1,6 +1,8 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
+   // bu blok içindeki kodlar, sayfadaki tüm elementler
+  // tarayıcı tarafından yaratıldıktan hemen sonra çalışır
+  const form = document.getElementById('contactForm'); //tüm formu alıyoruz
   const jsBtn = document.getElementById('jsValidateBtn');
 
   jsBtn.addEventListener('click', () => {
